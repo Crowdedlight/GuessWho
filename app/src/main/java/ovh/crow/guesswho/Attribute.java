@@ -2,11 +2,10 @@ package ovh.crow.guesswho;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.Index;
 import org.greenrobot.greendao.annotation.JoinEntity;
 import org.greenrobot.greendao.annotation.NotNull;
-import org.greenrobot.greendao.annotation.Generated;
 import org.greenrobot.greendao.annotation.ToMany;
+import org.greenrobot.greendao.annotation.ToOne;
 
 import java.util.List;
 
@@ -15,21 +14,27 @@ import java.util.List;
  */
 
 @Entity
-public class Person {
-
+public class Attribute {
     @Id
     private long id;
 
     @NotNull
-    private String imgName;
+    private long AreaID;
     @NotNull
-    private String name;
+    private long ModifierID;
 
     @ToMany
     @JoinEntity(
             entity = PersonAttribute.class,
-            sourceProperty = "PersonID",
-            targetProperty = "AttributeID"
+            sourceProperty = "AttributeID",
+            targetProperty = "PersonID"
     )
-    private List<Attribute> AttributesWithThisPerson;
+    private List<Person> PersonsWithThisAttribute;
+
+    @ToOne(joinProperty = "AreaID")
+    private Areas area;
+
+    @ToOne(joinProperty = "ModifierID")
+    private Modifiers modifier;
+
 }

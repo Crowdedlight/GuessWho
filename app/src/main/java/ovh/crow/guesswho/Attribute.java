@@ -18,12 +18,12 @@ import org.greenrobot.greendao.DaoException;
 @Entity
 public class Attribute {
     @Id
-    private long id;
+    private Long id;
 
     @NotNull
-    private long AreaID;
+    private Long AreaID;
     @NotNull
-    private long ModifierID;
+    private Long ModifierID;
 
     @ToMany
     @JoinEntity(
@@ -47,8 +47,8 @@ public class Attribute {
     @Generated(hash = 2114943461)
     private transient AttributeDao myDao;
 
-    @Generated(hash = 816138395)
-    public Attribute(long id, long AreaID, long ModifierID) {
+    @Generated(hash = 35132546)
+    public Attribute(Long id, @NotNull Long AreaID, @NotNull Long ModifierID) {
         this.id = id;
         this.AreaID = AreaID;
         this.ModifierID = ModifierID;
@@ -58,27 +58,27 @@ public class Attribute {
     public Attribute() {
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
-    public long getAreaID() {
+    public Long getAreaID() {
         return this.AreaID;
     }
 
-    public void setAreaID(long AreaID) {
+    public void setAreaID(Long AreaID) {
         this.AreaID = AreaID;
     }
 
-    public long getModifierID() {
+    public Long getModifierID() {
         return this.ModifierID;
     }
 
-    public void setModifierID(long ModifierID) {
+    public void setModifierID(Long ModifierID) {
         this.ModifierID = ModifierID;
     }
 
@@ -86,9 +86,9 @@ public class Attribute {
     private transient Long area__resolvedKey;
 
     /** To-one relationship, resolved on first access. */
-    @Generated(hash = 1849853696)
+    @Generated(hash = 1595218314)
     public Areas getArea() {
-        long __key = this.AreaID;
+        Long __key = this.AreaID;
         if (area__resolvedKey == null || !area__resolvedKey.equals(__key)) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
@@ -122,9 +122,9 @@ public class Attribute {
     private transient Long modifier__resolvedKey;
 
     /** To-one relationship, resolved on first access. */
-    @Generated(hash = 924219864)
+    @Generated(hash = 474108502)
     public Modifiers getModifier() {
-        long __key = this.ModifierID;
+        Long __key = this.ModifierID;
         if (modifier__resolvedKey == null || !modifier__resolvedKey.equals(__key)) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {

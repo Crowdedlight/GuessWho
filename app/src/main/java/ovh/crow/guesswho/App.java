@@ -11,17 +11,14 @@ import ovh.crow.guesswho.DaoMaster.DevOpenHelper;
 
 public class App extends Application {
 
-    //Encrypted db?
-    public static final boolean ENCRYPTED = false;
-
     private DaoSession daoSession;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        DevOpenHelper helper = new DevOpenHelper(this, ENCRYPTED ? "guesswho-db-encrypted" : "guesswho-db");
-        Database db = ENCRYPTED ? helper.getEncryptedWritableDb("super-secret") : helper.getWritableDb();
+        DevOpenHelper helper = new DevOpenHelper(this, "guesswho-db");
+        Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }
 

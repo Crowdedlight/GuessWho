@@ -2,6 +2,7 @@ package ovh.crow.guesswho;
 
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Keep;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.annotation.ToMany;
 
@@ -16,7 +17,7 @@ import org.greenrobot.greendao.DaoException;
 @Entity
 public class Areas {
     @Id
-    private long id;
+    private Long id;
 
     @NotNull
     private String name;
@@ -32,8 +33,8 @@ public class Areas {
     @Generated(hash = 2064456740)
     private transient AreasDao myDao;
 
-    @Generated(hash = 1048829920)
-    public Areas(long id, @NotNull String name) {
+    @Generated(hash = 1750038004)
+    public Areas(Long id, @NotNull String name) {
         this.id = id;
         this.name = name;
     }
@@ -42,11 +43,11 @@ public class Areas {
     public Areas() {
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

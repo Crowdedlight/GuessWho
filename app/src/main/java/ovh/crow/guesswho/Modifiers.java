@@ -16,7 +16,7 @@ import org.greenrobot.greendao.DaoException;
 @Entity
 public class Modifiers {
     @Id
-    private long id;
+    private Long id;
 
     @NotNull
     private String name;
@@ -32,8 +32,8 @@ public class Modifiers {
     @Generated(hash = 2057374368)
     private transient ModifiersDao myDao;
 
-    @Generated(hash = 273867300)
-    public Modifiers(long id, @NotNull String name) {
+    @Generated(hash = 1567831043)
+    public Modifiers(Long id, @NotNull String name) {
         this.id = id;
         this.name = name;
     }
@@ -42,11 +42,11 @@ public class Modifiers {
     public Modifiers() {
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -129,4 +129,5 @@ public class Modifiers {
         this.daoSession = daoSession;
         myDao = daoSession != null ? daoSession.getModifiersDao() : null;
     }
+
 }

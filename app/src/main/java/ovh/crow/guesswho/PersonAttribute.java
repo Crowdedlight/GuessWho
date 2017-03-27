@@ -14,12 +14,12 @@ import org.greenrobot.greendao.DaoException;
 @Entity
 public class PersonAttribute {
     @Id
-    private long id;
+    private Long id;
 
     @NotNull
-    private long PersonID;
+    private Long PersonID;
     @NotNull
-    private long AttributeID;
+    private Long AttributeID;
 
     @ToOne(joinProperty = "PersonID")
     private Person person;
@@ -35,43 +35,49 @@ public class PersonAttribute {
     @Generated(hash = 542276787)
     private transient PersonAttributeDao myDao;
 
-    @Generated(hash = 1154009267)
-    private transient Long person__resolvedKey;
-
-    @Generated(hash = 735162862)
-    private transient Long attribute__resolvedKey;
-
-    @Generated(hash = 728652474)
-    public PersonAttribute(long id, long PersonID, long AttributeID) {
+    @Generated(hash = 109839529)
+    public PersonAttribute(Long id, @NotNull Long PersonID,
+            @NotNull Long AttributeID) {
         this.id = id;
         this.PersonID = PersonID;
         this.AttributeID = AttributeID;
     }
+
     @Generated(hash = 746416815)
     public PersonAttribute() {
     }
-    public long getId() {
+
+    public Long getId() {
         return this.id;
     }
-    public void setId(long id) {
+
+    public void setId(Long id) {
         this.id = id;
     }
-    public long getPersonID() {
+
+    public Long getPersonID() {
         return this.PersonID;
     }
-    public void setPersonID(long PersonID) {
+
+    public void setPersonID(Long PersonID) {
         this.PersonID = PersonID;
     }
-    public long getAttributeID() {
+
+    public Long getAttributeID() {
         return this.AttributeID;
     }
-    public void setAttributeID(long AttributeID) {
+
+    public void setAttributeID(Long AttributeID) {
         this.AttributeID = AttributeID;
     }
+
+    @Generated(hash = 1154009267)
+    private transient Long person__resolvedKey;
+
     /** To-one relationship, resolved on first access. */
-    @Generated(hash = 1043444630)
+    @Generated(hash = 377943963)
     public Person getPerson() {
-        long __key = this.PersonID;
+        Long __key = this.PersonID;
         if (person__resolvedKey == null || !person__resolvedKey.equals(__key)) {
             final DaoSession daoSession = this.daoSession;
             if (daoSession == null) {
@@ -86,6 +92,7 @@ public class PersonAttribute {
         }
         return person;
     }
+
     /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 1043261299)
     public void setPerson(@NotNull Person person) {
@@ -99,10 +106,14 @@ public class PersonAttribute {
             person__resolvedKey = PersonID;
         }
     }
+
+    @Generated(hash = 735162862)
+    private transient Long attribute__resolvedKey;
+
     /** To-one relationship, resolved on first access. */
-    @Generated(hash = 951802101)
+    @Generated(hash = 1191217157)
     public Attribute getAttribute() {
-        long __key = this.AttributeID;
+        Long __key = this.AttributeID;
         if (attribute__resolvedKey == null
                 || !attribute__resolvedKey.equals(__key)) {
             final DaoSession daoSession = this.daoSession;
@@ -118,6 +129,7 @@ public class PersonAttribute {
         }
         return attribute;
     }
+
     /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 1819862204)
     public void setAttribute(@NotNull Attribute attribute) {
@@ -131,6 +143,7 @@ public class PersonAttribute {
             attribute__resolvedKey = AttributeID;
         }
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#delete(Object)}.
      * Entity must attached to an entity context.
@@ -142,6 +155,7 @@ public class PersonAttribute {
         }
         myDao.delete(this);
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#refresh(Object)}.
      * Entity must attached to an entity context.
@@ -153,6 +167,7 @@ public class PersonAttribute {
         }
         myDao.refresh(this);
     }
+
     /**
      * Convenient call for {@link org.greenrobot.greendao.AbstractDao#update(Object)}.
      * Entity must attached to an entity context.
@@ -164,6 +179,7 @@ public class PersonAttribute {
         }
         myDao.update(this);
     }
+
     /** called by internal mechanisms, do not call yourself. */
     @Generated(hash = 364880310)
     public void __setDaoSession(DaoSession daoSession) {

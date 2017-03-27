@@ -19,7 +19,7 @@ import org.greenrobot.greendao.DaoException;
 public class Person {
 
     @Id
-    private long id;
+    private Long id;
 
     @NotNull
     private String imgName;
@@ -42,8 +42,8 @@ public class Person {
     @Generated(hash = 778611619)
     private transient PersonDao myDao;
 
-    @Generated(hash = 1320856123)
-    public Person(long id, @NotNull String imgName, @NotNull String name) {
+    @Generated(hash = 983503944)
+    public Person(Long id, @NotNull String imgName, @NotNull String name) {
         this.id = id;
         this.imgName = imgName;
         this.name = name;
@@ -53,11 +53,11 @@ public class Person {
     public Person() {
     }
 
-    public long getId() {
+    public Long getId() {
         return this.id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

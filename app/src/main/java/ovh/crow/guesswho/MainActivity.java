@@ -8,15 +8,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private PersonDao personDao;
-    private PersonAttributeDao personAttributeDao;
-    private ModifiersDao modifiersDao;
-    private AttributeDao attributeDao;
-    private AreasDao areasDao;
-
-    //Get Session
-    DaoSession daoSession = ((App) getApplication()).getDaoSession();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,12 +20,15 @@ public class MainActivity extends AppCompatActivity {
 
     private void seedDatabase() {
 
+        //Get Session
+        DaoSession daoSession = ((App) getApplication()).getDaoSession();
+
         //Get All tables
-        personDao = daoSession.getPersonDao();
-        personAttributeDao = daoSession.getPersonAttributeDao();
-        modifiersDao = daoSession.getModifiersDao();
-        attributeDao = daoSession.getAttributeDao();
-        areasDao = daoSession.getAreasDao();
+        PersonDao personDao = daoSession.getPersonDao();
+        PersonAttributeDao personAttributeDao = daoSession.getPersonAttributeDao();
+        ModifiersDao modifiersDao = daoSession.getModifiersDao();
+        AttributeDao attributeDao = daoSession.getAttributeDao();
+        AreasDao areasDao = daoSession.getAreasDao();
 
         //region // ----- SEED AREAS ------ //
         // ------------------------------------ //
@@ -403,10 +397,10 @@ public class MainActivity extends AppCompatActivity {
         yolanda.setImgName("IMG_yolanda");
         personList.add(yolanda);
 
-        Person Roger = new Person();
-        Roger.setName("Roger");
-        Roger.setImgName("IMG_roger");
-        personList.add(Roger);
+        Person roger = new Person();
+        roger.setName("Roger");
+        roger.setImgName("IMG_roger");
+        personList.add(roger);
 
         Person fabienne = new Person();
         fabienne.setName("Fabienne");
@@ -801,6 +795,964 @@ public class MainActivity extends AppCompatActivity {
         personAttributesList.add(captKoonsSkin);
 
         //endregion
+
+        //region // ----- JULES ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute julesHair = new PersonAttribute();
+        julesHair.setPerson(jules);
+        julesHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(julesHair);
+
+        //Attribute 1a - black hair
+        PersonAttribute julesHairColor = new PersonAttribute();
+        julesHairColor.setPerson(jules);
+        julesHairColor.setAttribute(hairAttBlack);
+        personAttributesList.add(julesHairColor);
+
+        //Attribute 2 - has facial hair
+        PersonAttribute julesFacial = new PersonAttribute();
+        julesFacial.setPerson(jules);
+        julesFacial.setAttribute(facialAttHasHair);
+        personAttributesList.add(julesFacial);
+
+        //Attribute 2a - black facial hair
+        PersonAttribute julesFacialColor = new PersonAttribute();
+        julesFacialColor.setPerson(jules);
+        julesFacialColor.setAttribute(facialAttBlack);
+        personAttributesList.add(julesFacialColor);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute julesEyes = new PersonAttribute();
+        julesEyes.setPerson(jules);
+        julesEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(julesEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute julesNose = new PersonAttribute();
+        julesNose.setPerson(jules);
+        julesNose.setAttribute(noseAttLarge);
+        personAttributesList.add(julesNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute julesAccessory = new PersonAttribute();
+        julesAccessory.setPerson(jules);
+        julesAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(julesAccessory);
+
+        //Attribute 6 - Male
+        PersonAttribute julesGender = new PersonAttribute();
+        julesGender.setPerson(jules);
+        julesGender.setAttribute(genderAttMale);
+        personAttributesList.add(julesGender);
+
+        //Attribute 7 - Brown Skin
+        PersonAttribute julesSkin = new PersonAttribute();
+        julesSkin.setPerson(jules);
+        julesSkin.setAttribute(skinAttBrown);
+        personAttributesList.add(julesSkin);
+
+        //endregion
+
+        //region // ----- BUDDY ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute buddyHair = new PersonAttribute();
+        buddyHair.setPerson(buddy);
+        buddyHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(buddyHair);
+
+        //Attribute 1 - brown hair
+        PersonAttribute buddyHairColor = new PersonAttribute();
+        buddyHairColor.setPerson(buddy);
+        buddyHairColor.setAttribute(hairAttBrown);
+        personAttributesList.add(buddyHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute buddyFacial = new PersonAttribute();
+        buddyFacial.setPerson(buddy);
+        buddyFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(buddyFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute buddyEyes = new PersonAttribute();
+        buddyEyes.setPerson(buddy);
+        buddyEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(buddyEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute buddyNose = new PersonAttribute();
+        buddyNose.setPerson(buddy);
+        buddyNose.setAttribute(noseAttSmall);
+        personAttributesList.add(buddyNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute buddyAccessory = new PersonAttribute();
+        buddyAccessory.setPerson(buddy);
+        buddyAccessory.setAttribute(accessoryAttGlasses);
+        personAttributesList.add(buddyAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute buddyGender = new PersonAttribute();
+        buddyGender.setPerson(buddy);
+        buddyGender.setAttribute(genderAttMale);
+        personAttributesList.add(buddyGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute buddySkin = new PersonAttribute();
+        buddySkin.setPerson(buddy);
+        buddySkin.setAttribute(skinAttWhite);
+        personAttributesList.add(buddySkin);
+
+        //endregion
+
+        //region // ----- GIMP ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute gtmpHair = new PersonAttribute();
+        gtmpHair.setPerson(gimp);
+        gtmpHair.setAttribute(hairAttNoHair);
+        personAttributesList.add(gtmpHair);
+
+
+        //Attribute 2 - no facial hair
+        PersonAttribute gimpFacial = new PersonAttribute();
+        gimpFacial.setPerson(gimp);
+        gimpFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(gimpFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute gimpEyes = new PersonAttribute();
+        gimpEyes.setPerson(gimp);
+        gimpEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(gimpEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute gimpNose = new PersonAttribute();
+        gimpNose.setPerson(gimp);
+        gimpNose.setAttribute(noseAttLarge);
+        personAttributesList.add(gimpNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute gimpAccessory = new PersonAttribute();
+        gimpAccessory.setPerson(gimp);
+        gimpAccessory.setAttribute(accessoryAttMask);
+        personAttributesList.add(gimpAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute gimpGender = new PersonAttribute();
+        gimpGender.setPerson(gimp);
+        gimpGender.setAttribute(genderAttMale);
+        personAttributesList.add(gimpGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute gimpSkin = new PersonAttribute();
+        gimpSkin.setPerson(gimp);
+        gimpSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(gimpSkin);
+
+        //endregion
+
+        //region // ----- YOLANDA ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute yolandaHair = new PersonAttribute();
+        yolandaHair.setPerson(yolanda);
+        yolandaHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(yolandaHair);
+
+        //Attribute 1 - orange hair
+        PersonAttribute yolandaHairColor = new PersonAttribute();
+        yolandaHairColor.setPerson(yolanda);
+        yolandaHairColor.setAttribute(hairAttOrange);
+        personAttributesList.add(yolandaHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute yolandaFacial = new PersonAttribute();
+        yolandaFacial.setPerson(yolanda);
+        yolandaFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(yolandaFacial);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute yolandaEyes = new PersonAttribute();
+        yolandaEyes.setPerson(yolanda);
+        yolandaEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(yolandaEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute yolandaNose = new PersonAttribute();
+        yolandaNose.setPerson(yolanda);
+        yolandaNose.setAttribute(noseAttLarge);
+        personAttributesList.add(yolandaNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute yolandaAccessory = new PersonAttribute();
+        yolandaAccessory.setPerson(yolanda);
+        yolandaAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(yolandaAccessory);
+
+        //Attribute 6 - female
+        PersonAttribute yolandaGender = new PersonAttribute();
+        yolandaGender.setPerson(yolanda);
+        yolandaGender.setAttribute(genderAttFemale);
+        personAttributesList.add(yolandaGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute yolandaSkin = new PersonAttribute();
+        yolandaSkin.setPerson(yolanda);
+        yolandaSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(yolandaSkin);
+
+        //endregion
+
+        //region // ----- ROGER ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute rogerHair = new PersonAttribute();
+        rogerHair.setPerson(roger);
+        rogerHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(rogerHair);
+
+        //Attribute 1 - blond hair
+        PersonAttribute rogerHairColor = new PersonAttribute();
+        rogerHairColor.setPerson(roger);
+        rogerHairColor.setAttribute(hairAttBlond);
+        personAttributesList.add(rogerHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute rogerFacial = new PersonAttribute();
+        rogerFacial.setPerson(roger);
+        rogerFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(rogerFacial);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute rogerEyes = new PersonAttribute();
+        rogerEyes.setPerson(roger);
+        rogerEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(rogerEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute rogerNose = new PersonAttribute();
+        rogerNose.setPerson(roger);
+        rogerNose.setAttribute(noseAttSmall);
+        personAttributesList.add(rogerNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute rogerAccessory = new PersonAttribute();
+        rogerAccessory.setPerson(roger);
+        rogerAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(rogerAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute rogerGender = new PersonAttribute();
+        rogerGender.setPerson(roger);
+        rogerGender.setAttribute(genderAttMale);
+        personAttributesList.add(rogerGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute rogerSkin = new PersonAttribute();
+        rogerSkin.setPerson(roger);
+        rogerSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(rogerSkin);
+
+        //endregion
+
+        //region // ----- FABIENNE ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute fabienneHair = new PersonAttribute();
+        fabienneHair.setPerson(fabienne);
+        fabienneHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(fabienneHair);
+
+        //Attribute 1 - black hair
+        PersonAttribute fabienneHairColor = new PersonAttribute();
+        fabienneHairColor.setPerson(fabienne);
+        fabienneHairColor.setAttribute(hairAttBlack);
+        personAttributesList.add(fabienneHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute fabienneFacial = new PersonAttribute();
+        fabienneFacial.setPerson(fabienne);
+        fabienneFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(fabienneFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute fabienneEyes = new PersonAttribute();
+        fabienneEyes.setPerson(fabienne);
+        fabienneEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(fabienneEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute fabienneNose = new PersonAttribute();
+        fabienneNose.setPerson(fabienne);
+        fabienneNose.setAttribute(noseAttSmall);
+        personAttributesList.add(fabienneNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute fabienneAccessory = new PersonAttribute();
+        fabienneAccessory.setPerson(fabienne);
+        fabienneAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(fabienneAccessory);
+
+        //Attribute 6 - female
+        PersonAttribute fabienneGender = new PersonAttribute();
+        fabienneGender.setPerson(fabienne);
+        fabienneGender.setAttribute(genderAttFemale);
+        personAttributesList.add(fabienneGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute fabienneSkin = new PersonAttribute();
+        fabienneSkin.setPerson(fabienne);
+        fabienneSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(fabienneSkin);
+
+        //endregion
+
+        //region // ----- RINGO ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute ringoHair = new PersonAttribute();
+        ringoHair.setPerson(ringo);
+        ringoHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(ringoHair);
+
+        //Attribute 1 - blond hair
+        PersonAttribute ringoHairColor = new PersonAttribute();
+        ringoHairColor.setPerson(ringo);
+        ringoHairColor.setAttribute(hairAttBlond);
+        personAttributesList.add(ringoHairColor);
+
+        //Attribute 2 - has facial hair
+        PersonAttribute ringoFacial = new PersonAttribute();
+        ringoFacial.setPerson(ringo);
+        ringoFacial.setAttribute(facialAttHasHair);
+        personAttributesList.add(ringoFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute ringoEyes = new PersonAttribute();
+        ringoEyes.setPerson(ringo);
+        ringoEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(ringoEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute ringoNose = new PersonAttribute();
+        ringoNose.setPerson(ringo);
+        ringoNose.setAttribute(noseAttLarge);
+        personAttributesList.add(ringoNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute ringoAccessory = new PersonAttribute();
+        ringoAccessory.setPerson(ringo);
+        ringoAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(ringoAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute ringoGender = new PersonAttribute();
+        ringoGender.setPerson(ringo);
+        ringoGender.setAttribute(genderAttMale);
+        personAttributesList.add(ringoGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute ringoSkin = new PersonAttribute();
+        ringoSkin.setPerson(ringo);
+        ringoSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(ringoSkin);
+
+        //endregion
+
+        //region // ----- RAQUEL ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute raquelHair = new PersonAttribute();
+        raquelHair.setPerson(raquel);
+        raquelHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(raquelHair);
+
+        //Attribute 1 - orange hair
+        PersonAttribute raquelHairColor = new PersonAttribute();
+        raquelHairColor.setPerson(raquel);
+        raquelHairColor.setAttribute(hairAttOrange);
+        personAttributesList.add(raquelHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute raquelFacial = new PersonAttribute();
+        raquelFacial.setPerson(raquel);
+        raquelFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(raquelFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute raquelEyes = new PersonAttribute();
+        raquelEyes.setPerson(raquel);
+        raquelEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(raquelEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute raquelNose = new PersonAttribute();
+        raquelNose.setPerson(raquel);
+        raquelNose.setAttribute(noseAttSmall);
+        personAttributesList.add(raquelNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute raquelAccessory = new PersonAttribute();
+        raquelAccessory.setPerson(raquel);
+        raquelAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(raquelAccessory);
+
+        //Attribute 6 - female
+        PersonAttribute raquelGender = new PersonAttribute();
+        raquelGender.setPerson(raquel);
+        raquelGender.setAttribute(genderAttFemale);
+        personAttributesList.add(raquelGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute raquelSkin = new PersonAttribute();
+        raquelSkin.setPerson(raquel);
+        raquelSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(raquelSkin);
+
+        //endregion
+
+        //region // ----- LANCE ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute lanceHair = new PersonAttribute();
+        lanceHair.setPerson(lance);
+        lanceHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(lanceHair);
+
+        //Attribute 1a - orange hair
+        PersonAttribute lanceHairColor = new PersonAttribute();
+        lanceHairColor.setPerson(lance);
+        lanceHairColor.setAttribute(hairAttOrange);
+        personAttributesList.add(lanceHairColor);
+
+        //Attribute 2 - has facial hair
+        PersonAttribute lanceFacial = new PersonAttribute();
+        lanceFacial.setPerson(lance);
+        lanceFacial.setAttribute(facialAttHasHair);
+        personAttributesList.add(lanceFacial);
+
+        //Attribute 2a - orange facial hair
+        PersonAttribute lanceFacialColor = new PersonAttribute();
+        lanceFacialColor.setPerson(lance);
+        lanceFacialColor.setAttribute(facialAttOrange);
+        personAttributesList.add(lanceFacialColor);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute lanceEyes = new PersonAttribute();
+        lanceEyes.setPerson(lance);
+        lanceEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(lanceEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute lanceNose = new PersonAttribute();
+        lanceNose.setPerson(lance);
+        lanceNose.setAttribute(noseAttSmall);
+        personAttributesList.add(lanceNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute lanceAccessory = new PersonAttribute();
+        lanceAccessory.setPerson(lance);
+        lanceAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(lanceAccessory);
+
+        //Attribute 6 - Male
+        PersonAttribute lanceGender = new PersonAttribute();
+        lanceGender.setPerson(lance);
+        lanceGender.setAttribute(genderAttMale);
+        personAttributesList.add(lanceGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute lanceSkin = new PersonAttribute();
+        lanceSkin.setPerson(lance);
+        lanceSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(lanceSkin);
+
+        //endregion
+
+        //region // ----- BUTCH ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute butchHair = new PersonAttribute();
+        butchHair.setPerson(butch);
+        butchHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(butchHair);
+
+        //Attribute 1 - blond hair
+        PersonAttribute butchHairColor = new PersonAttribute();
+        butchHairColor.setPerson(butch);
+        butchHairColor.setAttribute(hairAttBlond);
+        personAttributesList.add(butchHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute butchFacial = new PersonAttribute();
+        butchFacial.setPerson(butch);
+        butchFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(butchFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute butchEyes = new PersonAttribute();
+        butchEyes.setPerson(butch);
+        butchEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(butchEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute butchNose = new PersonAttribute();
+        butchNose.setPerson(butch);
+        butchNose.setAttribute(noseAttSmall);
+        personAttributesList.add(butchNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute butchAccessory = new PersonAttribute();
+        butchAccessory.setPerson(butch);
+        butchAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(butchAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute butchGender = new PersonAttribute();
+        butchGender.setPerson(butch);
+        butchGender.setAttribute(genderAttMale);
+        personAttributesList.add(butchGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute butchSkin = new PersonAttribute();
+        butchSkin.setPerson(butch);
+        butchSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(butchSkin);
+
+        //endregion
+
+        //region // ----- MIA ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute miaHair = new PersonAttribute();
+        miaHair.setPerson(mia);
+        miaHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(miaHair);
+
+        //Attribute 1 - brown hair
+        PersonAttribute miaHairColor = new PersonAttribute();
+        miaHairColor.setPerson(mia);
+        miaHairColor.setAttribute(hairAttBrown);
+        personAttributesList.add(miaHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute miaFacial = new PersonAttribute();
+        miaFacial.setPerson(mia);
+        miaFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(miaFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute miaEyes = new PersonAttribute();
+        miaEyes.setPerson(mia);
+        miaEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(miaEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute miaNose = new PersonAttribute();
+        miaNose.setPerson(mia);
+        miaNose.setAttribute(noseAttSmall);
+        personAttributesList.add(miaNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute miaAccessory = new PersonAttribute();
+        miaAccessory.setPerson(mia);
+        miaAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(miaAccessory);
+
+        //Attribute 6 - female
+        PersonAttribute miaGender = new PersonAttribute();
+        miaGender.setPerson(mia);
+        miaGender.setAttribute(genderAttFemale);
+        personAttributesList.add(miaGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute miaSkin = new PersonAttribute();
+        miaSkin.setPerson(mia);
+        miaSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(miaSkin);
+
+        //endregion
+
+        //region // ----- MARVIN ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute marvinHair = new PersonAttribute();
+        marvinHair.setPerson(marvin);
+        marvinHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(marvinHair);
+
+        //Attribute 1 - black hair
+        PersonAttribute marvinHairColor = new PersonAttribute();
+        marvinHairColor.setPerson(marvin);
+        marvinHairColor.setAttribute(hairAttBlack);
+        personAttributesList.add(marvinHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute marvinFacial = new PersonAttribute();
+        marvinFacial.setPerson(marvin);
+        marvinFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(marvinFacial);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute marvinEyes = new PersonAttribute();
+        marvinEyes.setPerson(marvin);
+        marvinEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(marvinEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute marvinNose = new PersonAttribute();
+        marvinNose.setPerson(marvin);
+        marvinNose.setAttribute(noseAttLarge);
+        personAttributesList.add(marvinNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute marvinAccessory = new PersonAttribute();
+        marvinAccessory.setPerson(marvin);
+        marvinAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(marvinAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute marvinGender = new PersonAttribute();
+        marvinGender.setPerson(marvin);
+        marvinGender.setAttribute(genderAttMale);
+        personAttributesList.add(marvinGender);
+
+        //Attribute 7 - brown Skin
+        PersonAttribute marvinSkin = new PersonAttribute();
+        marvinSkin.setPerson(marvin);
+        marvinSkin.setAttribute(skinAttBrown);
+        personAttributesList.add(marvinSkin);
+
+        //endregion
+
+        //region // ----- ZED ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute zedHair = new PersonAttribute();
+        zedHair.setPerson(zed);
+        zedHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(zedHair);
+
+        //Attribute 1 - blond hair
+        PersonAttribute zedHairColor = new PersonAttribute();
+        zedHairColor.setPerson(zed);
+        zedHairColor.setAttribute(hairAttBlond);
+        personAttributesList.add(zedHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute zedFacial = new PersonAttribute();
+        zedFacial.setPerson(zed);
+        zedFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(zedFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute zedEyes = new PersonAttribute();
+        zedEyes.setPerson(zed);
+        zedEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(zedEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute zedNose = new PersonAttribute();
+        zedNose.setPerson(zed);
+        zedNose.setAttribute(noseAttLarge);
+        personAttributesList.add(zedNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute zedAccessory = new PersonAttribute();
+        zedAccessory.setPerson(zed);
+        zedAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(zedAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute zedGender = new PersonAttribute();
+        zedGender.setPerson(zed);
+        zedGender.setAttribute(genderAttMale);
+        personAttributesList.add(zedGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute zedSkin = new PersonAttribute();
+        zedSkin.setPerson(zed);
+        zedSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(zedSkin);
+
+        //endregion
+
+        //region // ----- BRETT ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute brettHair = new PersonAttribute();
+        brettHair.setPerson(brett);
+        brettHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(brettHair);
+
+        //Attribute 1 - brown hair
+        PersonAttribute brettHairColor = new PersonAttribute();
+        brettHairColor.setPerson(brett);
+        brettHairColor.setAttribute(hairAttBrown);
+        personAttributesList.add(brettHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute brettFacial = new PersonAttribute();
+        brettFacial.setPerson(brett);
+        brettFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(brettFacial);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute brettEyes = new PersonAttribute();
+        brettEyes.setPerson(brett);
+        brettEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(brettEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute brettNose = new PersonAttribute();
+        brettNose.setPerson(brett);
+        brettNose.setAttribute(noseAttLarge);
+        personAttributesList.add(brettNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute brettAccessory = new PersonAttribute();
+        brettAccessory.setPerson(brett);
+        brettAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(brettAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute brettGender = new PersonAttribute();
+        brettGender.setPerson(brett);
+        brettGender.setAttribute(genderAttMale);
+        personAttributesList.add(brettGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute brettSkin = new PersonAttribute();
+        brettSkin.setPerson(brett);
+        brettSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(brettSkin);
+
+        //endregion
+
+        //region // ----- TRUDI ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute trudiHair = new PersonAttribute();
+        trudiHair.setPerson(trudi);
+        trudiHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(trudiHair);
+
+        //Attribute 1 - brown hair
+        PersonAttribute trudiHairColor = new PersonAttribute();
+        trudiHairColor.setPerson(trudi);
+        trudiHairColor.setAttribute(hairAttBrown);
+        personAttributesList.add(trudiHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute trudiFacial = new PersonAttribute();
+        trudiFacial.setPerson(trudi);
+        trudiFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(trudiFacial);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute trudiEyes = new PersonAttribute();
+        trudiEyes.setPerson(trudi);
+        trudiEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(trudiEyes);
+
+        //Attribute 4 - small nose
+        PersonAttribute trudiNose = new PersonAttribute();
+        trudiNose.setPerson(trudi);
+        trudiNose.setAttribute(noseAttSmall);
+        personAttributesList.add(trudiNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute trudiAccessory = new PersonAttribute();
+        trudiAccessory.setPerson(trudi);
+        trudiAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(trudiAccessory);
+
+        //Attribute 6 - female
+        PersonAttribute trudiGender = new PersonAttribute();
+        trudiGender.setPerson(trudi);
+        trudiGender.setAttribute(genderAttFemale);
+        personAttributesList.add(trudiGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute trudiSkin = new PersonAttribute();
+        trudiSkin.setPerson(trudi);
+        trudiSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(trudiSkin);
+
+        //endregion
+
+        //region // ----- MAYNARD ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute maynardHair = new PersonAttribute();
+        maynardHair.setPerson(maynard);
+        maynardHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(maynardHair);
+
+        //Attribute 1a - brown hair
+        PersonAttribute maynardHairColor = new PersonAttribute();
+        maynardHairColor.setPerson(maynard);
+        maynardHairColor.setAttribute(hairAttBrown);
+        personAttributesList.add(maynardHairColor);
+
+        //Attribute 2 - has facial hair
+        PersonAttribute maynardFacial = new PersonAttribute();
+        maynardFacial.setPerson(maynard);
+        maynardFacial.setAttribute(facialAttHasHair);
+        personAttributesList.add(maynardFacial);
+
+        //Attribute 2a - brown facial hair
+        PersonAttribute maynardFacialColor = new PersonAttribute();
+        maynardFacialColor.setPerson(maynard);
+        maynardFacialColor.setAttribute(facialAttBrown);
+        personAttributesList.add(maynardFacialColor);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute maynardEyes = new PersonAttribute();
+        maynardEyes.setPerson(maynard);
+        maynardEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(maynardEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute maynardNose = new PersonAttribute();
+        maynardNose.setPerson(maynard);
+        maynardNose.setAttribute(noseAttLarge);
+        personAttributesList.add(maynardNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute maynardAccessory = new PersonAttribute();
+        maynardAccessory.setPerson(maynard);
+        maynardAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(maynardAccessory);
+
+        //Attribute 6 - Male
+        PersonAttribute maynardGender = new PersonAttribute();
+        maynardGender.setPerson(maynard);
+        maynardGender.setAttribute(genderAttMale);
+        personAttributesList.add(maynardGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute maynardSkin = new PersonAttribute();
+        maynardSkin.setPerson(maynard);
+        maynardSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(maynardSkin);
+
+        //endregion
+
+        //region // ----- VINCENT ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute vincentHair = new PersonAttribute();
+        vincentHair.setPerson(vincent);
+        vincentHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(vincentHair);
+
+        //Attribute 1 - brown hair
+        PersonAttribute vincentHairColor = new PersonAttribute();
+        vincentHairColor.setPerson(vincent);
+        vincentHairColor.setAttribute(hairAttBrown);
+        personAttributesList.add(vincentHairColor);
+
+        //Attribute 2 - no facial hair
+        PersonAttribute vincentFacial = new PersonAttribute();
+        vincentFacial.setPerson(vincent);
+        vincentFacial.setAttribute(facialAttNoHair);
+        personAttributesList.add(vincentFacial);
+
+        //Attribute 3 - blue eyes
+        PersonAttribute vincentEyes = new PersonAttribute();
+        vincentEyes.setPerson(vincent);
+        vincentEyes.setAttribute(eyesAttBlue);
+        personAttributesList.add(vincentEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute vincentNose = new PersonAttribute();
+        vincentNose.setPerson(vincent);
+        vincentNose.setAttribute(noseAttLarge);
+        personAttributesList.add(vincentNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute vincentAccessory = new PersonAttribute();
+        vincentAccessory.setPerson(vincent);
+        vincentAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(vincentAccessory);
+
+        //Attribute 6 - male
+        PersonAttribute vincentGender = new PersonAttribute();
+        vincentGender.setPerson(vincent);
+        vincentGender.setAttribute(genderAttMale);
+        personAttributesList.add(vincentGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute vincentSkin = new PersonAttribute();
+        vincentSkin.setPerson(vincent);
+        vincentSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(vincentSkin);
+
+        //endregion
+
+        //region // ----- WINSTON ----- //
+
+        //Attribute 1 - has hair
+        PersonAttribute winstonHair = new PersonAttribute();
+        winstonHair.setPerson(winston);
+        winstonHair.setAttribute(hairAttHasHair);
+        personAttributesList.add(winstonHair);
+
+        //Attribute 1a - brown hair
+        PersonAttribute winstonHairColor = new PersonAttribute();
+        winstonHairColor.setPerson(winston);
+        winstonHairColor.setAttribute(hairAttBrown);
+        personAttributesList.add(winstonHairColor);
+
+        //Attribute 2 - has facial hair
+        PersonAttribute winstonFacial = new PersonAttribute();
+        winstonFacial.setPerson(winston);
+        winstonFacial.setAttribute(facialAttHasHair);
+        personAttributesList.add(winstonFacial);
+
+        //Attribute 2a - brown facial hair
+        PersonAttribute winstonFacialColor = new PersonAttribute();
+        winstonFacialColor.setPerson(winston);
+        winstonFacialColor.setAttribute(facialAttBrown);
+        personAttributesList.add(winstonFacialColor);
+
+        //Attribute 3 - brown eyes
+        PersonAttribute winstonEyes = new PersonAttribute();
+        winstonEyes.setPerson(winston);
+        winstonEyes.setAttribute(eyesAttBrown);
+        personAttributesList.add(winstonEyes);
+
+        //Attribute 4 - large nose
+        PersonAttribute winstonNose = new PersonAttribute();
+        winstonNose.setPerson(winston);
+        winstonNose.setAttribute(noseAttLarge);
+        personAttributesList.add(winstonNose);
+
+        //Attribute 5 - no accessory
+        PersonAttribute winstonAccessory = new PersonAttribute();
+        winstonAccessory.setPerson(winston);
+        winstonAccessory.setAttribute(accessoryAttNone);
+        personAttributesList.add(winstonAccessory);
+
+        //Attribute 6 - Male
+        PersonAttribute winstonGender = new PersonAttribute();
+        winstonGender.setPerson(winston);
+        winstonGender.setAttribute(genderAttMale);
+        personAttributesList.add(winstonGender);
+
+        //Attribute 7 - white Skin
+        PersonAttribute winstonSkin = new PersonAttribute();
+        winstonSkin.setPerson(winston);
+        winstonSkin.setAttribute(skinAttWhite);
+        personAttributesList.add(winstonSkin);
+
+        //endregion
+
+        //insert in db
+        personAttributeDao.insertInTx(personAttributesList);
 
         //endregion
     }

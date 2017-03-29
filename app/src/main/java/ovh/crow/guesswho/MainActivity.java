@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
+import org.greenrobot.greendao.database.Database;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +22,21 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void seedDatabase() {
-        //Get Session
+        //Get Session & daoMaster
         DaoSession daoSession = ((App) getApplication()).getDaoSession();
+        DaoMaster.DevOpenHelper helper = ((App) getApplication()).getHelper();
+
+        //test if tables are empty, if not terminate function as database is already seeded
+        if (daoSession.getPersonAttributeDao().count() == 0) {
+            Log.d("DataBase", "database already seeded, skipping seed");
+            return;
+        }
+
+        //clean database
+        Database db = helper.getWritableDb();
+        //DaoMaster dMaster = new DaoMaster(db);
+        DaoMaster.dropAllTables(db, true);
+        DaoMaster.createAllTables(db, true);
 
         //Get All tables
         final PersonDao personDao = daoSession.getPersonDao();

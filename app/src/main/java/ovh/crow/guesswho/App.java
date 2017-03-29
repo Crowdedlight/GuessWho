@@ -12,17 +12,21 @@ import ovh.crow.guesswho.DaoMaster.DevOpenHelper;
 public class App extends Application {
 
     private DaoSession daoSession;
+    private DevOpenHelper helper;
 
     @Override
     public void onCreate() {
         super.onCreate();
 
-        DevOpenHelper helper = new DevOpenHelper(this, "guesswho-db");
+        helper = new DevOpenHelper(this, "guesswho-db");
         Database db = helper.getWritableDb();
         daoSession = new DaoMaster(db).newSession();
     }
 
     public DaoSession getDaoSession() {
         return daoSession;
+    }
+    public DevOpenHelper getHelper() {
+        return helper;
     }
 }

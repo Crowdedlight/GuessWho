@@ -27,17 +27,22 @@ public class MainActivity extends AppCompatActivity {
         DaoMaster.DevOpenHelper helper = ((App) getApplication()).getHelper();
 
         //test if tables are empty, if not terminate function as database is already seeded
-        if (daoSession.getPersonAttributeDao().count() == 0) {
-            Log.d("DataBase", "database already seeded, skipping seed");
+        if (daoSession.getPersonAttributeDao().count() != 0) {
+            Log.d("debug_db", "database already seeded, skipping seed");
             return;
         }
+        //else clean and create database
+        Log.d("debug_db", "database dropping tables");
 
         //clean database
         Database db = helper.getWritableDb();
         //DaoMaster dMaster = new DaoMaster(db);
         DaoMaster.dropAllTables(db, true);
+
+        Log.d("debug_db", "database creating tables");
         DaoMaster.createAllTables(db, true);
 
+        Log.d("debug_db", "database started seeding");
         //Get All tables
         final PersonDao personDao = daoSession.getPersonDao();
         final PersonAttributeDao personAttributeDao = daoSession.getPersonAttributeDao();
@@ -1762,5 +1767,7 @@ public class MainActivity extends AppCompatActivity {
                 //endregion
             }
         });
+
+        Log.d("debug_db", "database finished seeding");
     }
 }

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GuessWho</string>
+    <string name="ask_question">Ask Question</string>
 </resources>

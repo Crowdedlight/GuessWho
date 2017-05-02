@@ -33,8 +33,8 @@ public class NewGameActivity extends AppCompatActivity {
         discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
         startActivity(discoverableIntent);
 
-        AcceptThread newConnection = new AcceptThread();
-        newConnection.run();
+        //AcceptThread newConnection = new AcceptThread();
+        //newConnection.run();
 
     }
 

@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GuessWho</string>
+    <string name="ask_question">Ask Question</string>
+    <string name="title_activity_start_up">StartUpActivity</string>
+    <string name="tv_app_title">GUESS WHO</string>
+    <string name="btn_new_game">NEW GAME</string>
+    <string name="btn_join_game">JOIN GAME</string>
+    <string name="tv_exit">This device does not support Bluetooth.</string>
+    <string name="btn_exit">Close App</string>
+    <string name="device_name"></string>
+    <string name="device_hardware_address"></string>
 </resources>

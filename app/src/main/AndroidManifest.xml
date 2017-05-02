@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="ovh.crow.guesswho">
 
+    <!-- Bluetooth permission -->
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,6 +20,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!--
+        <activity
+            android:name=".StartUpActivity"
+            android:label="@string/title_activity_start_up"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        -->
+        <activity android:name=".NewGameActivity" />
+        <activity android:name=".JoinGameActivity" />
+        <activity android:name=".ConnectedActivity"></activity>
     </application>
 
 </manifest>

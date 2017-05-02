@@ -1,6 +1,7 @@
 package ovh.crow.guesswho;
 
 import android.bluetooth.BluetoothAdapter;
+import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,9 +13,12 @@ import android.widget.Button;
 import android.widget.PopupWindow;
 import android.widget.Toast;
 
+import java.util.Set;
+
 public class MainActivity extends AppCompatActivity {
 
     private final static int REQUEST_ENABLE_BT = 1;
+    private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         First check if device supports Bluetooth
         Then check if Bluetooth is enabled.
          */
-        BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+
         if (mBluetoothAdapter == null) {
             // Device does not support Bluetooth
             setContentView(R.layout.exit);
@@ -38,13 +42,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     protected void onNewGame(View view){
-
+        Intent intent = new Intent(this, NewGameActivity.class);
+        startActivity(intent);
     }
 
     protected void onJoinGame(View view){
-
+        Intent intent = new Intent(this, JoinGameActivity.class);
+        startActivity(intent);
     }
 
     protected void onExit(View view){

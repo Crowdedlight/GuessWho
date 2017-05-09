@@ -422,7 +422,11 @@ public class PlayingActivity extends AppCompatActivity {
     }
 
     private void newGame () {
-        // TODO: 08/05/2017 reset everything, but keep BT connection
+        gameData.resetData();
+        gameData.setMyTurn(btSD.getGameStarter());
+        setupViews();
+        selectPlayer();
+        new ReceiveQuestion(bufferedreader).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
     }
 
     public void onShowMyPlayer(View view) {

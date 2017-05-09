@@ -4,9 +4,14 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
+import android.media.Image;
 import android.os.AsyncTask;
+import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -24,6 +29,25 @@ public class NewGameActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_game);
 
         btSD = (App)getApplication();
+
+        final ImageView iv = (ImageView) findViewById(R.id.iv_logo_rotate);
+        final Animation an = AnimationUtils.loadAnimation(getBaseContext(),R.anim.rotate);
+
+        iv.startAnimation(an);
+        an.setAnimationListener(new Animation.AnimationListener(){
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                iv.startAnimation(an);
+            }
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
 
         Intent discoverableIntent =
                 new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);

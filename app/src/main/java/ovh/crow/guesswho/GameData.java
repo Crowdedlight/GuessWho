@@ -52,6 +52,13 @@ public class GameData {
     public Person getSelectedPerson() {return selectedPerson;}
 
     public int getNoGuess() {return noGuess;}
+    public void resetData() {
+        this.noGuess = 0;
+        this.flagOut = -1;
+        this.flagIn = -1;
+        this.attID = 0l;
+        this.perID = 0l;
+    }
 
     public String toJSON(){
         JSONObject obj = new JSONObject();

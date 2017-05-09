@@ -5,8 +5,24 @@
     <string name="tv_app_title">GUESS WHO</string>
     <string name="btn_new_game">NEW GAME</string>
     <string name="btn_join_game">JOIN GAME</string>
+    <string name="btn_about">ABOUT</string>
     <string name="tv_exit">This device does not support Bluetooth.</string>
     <string name="btn_exit">Close App</string>
     <string name="device_name"></string>
     <string name="device_hardware_address"></string>
+    <string name="btn_sel_player">Select Player</string>
+    <string name="tv_shake">Shake the device, to change player.</string>
+    <string name="tv_select">Select a player</string>
+    <string name="tv_waiting">Waiting for other player..</string>
+    <string name="btn_my_player">My Player</string>
+    <string name="btn_gamestats">Game Stats</string>
+    <string name="tv_about">To play this game, you will need an opponent,
+        with another bluetooth enabled Android device.
+        You will need to pair up your devices manually before starting the game.
+        When playing, keep updating your screen manually, by tapping on the
+        photos. Whenever you get an answer to a question that you asked,
+        you can exclude the photos that doesn\'t mach the answer.
+        Once you have narrowed your options down, you can make a guess
+        on a person, by long-pressing on a photo.</string>
+
 </resources>

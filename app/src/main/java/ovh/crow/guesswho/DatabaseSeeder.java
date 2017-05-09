@@ -59,7 +59,7 @@ public class DatabaseSeeder {
 
                 //AREA 2
                 Areas areaFacialHair = new Areas();
-                areaFacialHair.setName("FacialHair");
+                areaFacialHair.setName("Facial Hair");
                 areasDao.insert(areaFacialHair);
 
                 //AREA 3
@@ -79,7 +79,7 @@ public class DatabaseSeeder {
 
                 //AREA 6
                 Areas areaSkinTone = new Areas();
-                areaSkinTone.setName("SkinTone");
+                areaSkinTone.setName("Skin tone");
                 areasDao.insert(areaSkinTone);
 
                 //AREA 7
@@ -107,22 +107,22 @@ public class DatabaseSeeder {
 
                 //Modifier 3
                 Modifiers modifierNoHair = new Modifiers();
-                modifierNoHair.setName("NoHair");
+                modifierNoHair.setName("No Hair");
                 modifiersDao.insert(modifierNoHair);
 
                 //Modifier 4
                 Modifiers modifierHasHair = new Modifiers();
-                modifierHasHair.setName("HasHair");
+                modifierHasHair.setName("Has Hair");
                 modifiersDao.insert(modifierHasHair);
 
                 //Modifier 5
                 Modifiers modifierHasFacialHair = new Modifiers();
-                modifierHasFacialHair.setName("HasFacialHair");
+                modifierHasFacialHair.setName("Has Facial hair");
                 modifiersDao.insert(modifierHasFacialHair);
 
                 //Modifier 6
                 Modifiers modifierNoFacialHair = new Modifiers();
-                modifierNoFacialHair.setName("NoFacialHair");
+                modifierNoFacialHair.setName("No Facial hair");
                 modifiersDao.insert(modifierNoFacialHair);
 
                 //Modifier 7

@@ -4,14 +4,16 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.TextView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -20,19 +22,21 @@ import java.util.Iterator;
 import java.util.Set;
 import java.util.UUID;
 
-import static android.content.ContentValues.TAG;
-import static android.provider.Telephony.Carriers.NAME;
-
 public class JoinGameActivity extends AppCompatActivity {
 
     /* Show available devices. (Peripheral) */
 
     private BluetoothAdapter mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
+    private String connectedMAC;
+    private App btSD;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_join_game);
+
+        btSD = (App) getApplication();
 
         // See if there are paired devices:
         final Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
@@ -49,17 +53,16 @@ public class JoinGameActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.lv_bt_devices);
         listView.setAdapter(adapter);
 
-
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 int j = 0;
                 for (BluetoothDevice temp : pairedDevices) {
                     if (i == j) {
-                        Toast.makeText(JoinGameActivity.this, "Connection called with index: " + j, Toast.LENGTH_SHORT).show();
-                        ConnectThread newConnection = new ConnectThread(temp);
-                        newConnection.run();
+                        //Toast.makeText(JoinGameActivity.this, "Connection called with index: " + j, Toast.LENGTH_SHORT).show();
+                        connectedMAC = temp.getAddress();
+                        new ConnectATConnection(connectedMAC).execute();
+                        break;
                     }
                     j++;
                 }
@@ -67,61 +70,51 @@ public class JoinGameActivity extends AppCompatActivity {
         });
     }
 
-    private class ConnectThread extends Thread {
-        private final BluetoothSocket mmSocket;
+    public void startGame(){
+        Intent playingActivity = new Intent(this, PlayingActivity.class);
+        playingActivity.putExtra("device",connectedMAC);
+        startActivity(playingActivity);
+    }
+
+    private class ConnectATConnection extends AsyncTask<Void, Void, BluetoothSocket> {
+
+        private UUID RFCOMM_UUID = UUID.fromString("00000000-0000-0000-0000-000123456789");
+        private BluetoothAdapter mBluetoothAdapter;
+        private BluetoothSocket mmSocket;
         private final BluetoothDevice mmDevice;
-        private UUID RFCOMM = UUID.fromString("00000000-0000-0000-0000-000123456789");
 
-        public ConnectThread(BluetoothDevice device) {
-            // Use a temporary object that is later assigned to mmSocket
-            // because mmSocket is final.
+        public ConnectATConnection(String mac){
+            mBluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
             BluetoothSocket tmp = null;
-            mmDevice = device;
-
+            mmDevice = mBluetoothAdapter.getRemoteDevice(mac);
             try {
-                // Get a BluetoothSocket to connect with the given BluetoothDevice.
-                // MY_UUID is the app's UUID string, also used in the server code.
-                tmp = device.createRfcommSocketToServiceRecord(RFCOMM);
-            } catch (IOException e) {
-                Log.e(TAG, "Socket's create() method failed", e);
-            }
+                tmp = mmDevice.createInsecureRfcommSocketToServiceRecord(RFCOMM_UUID);
+            } catch (IOException e){}
             mmSocket = tmp;
         }
-
-        public void run() {
-            // Cancel discovery because it otherwise slows down the connection.
+        @Override
+        protected BluetoothSocket  doInBackground(Void... params) {
             mBluetoothAdapter.cancelDiscovery();
-
             try {
-                // Connect to the remote device through the socket. This call blocks
-                // until it succeeds or throws an exception.
                 mmSocket.connect();
-            } catch (IOException connectException) {
-                // Unable to connect; close the socket and return.
-                try {
+                return mmSocket;
+            } catch(IOException connectException){
+                System.out.println("Unable to connect to server");
+                try{
                     mmSocket.close();
-                } catch (IOException closeException) {
-                    Log.e(TAG, "Could not close the client socket", closeException);
+                } catch (IOException closeException){
+
                 }
+                return null;
             }
-
-            // The connection attempt succeeded. Perform work associated with
-            // the connection in a separate thread.
-
-            Intent intent = new Intent(ovh.crow.guesswho.JoinGameActivity.this, ConnectedActivity.class);
-            startActivity(intent);
-
-            //MyBluetoothService();
-            //manageMyConnectedSocket(mmSocket);
         }
-
-        // Closes the client socket and causes the thread to finish.
-        public void cancel() {
-            try {
-                mmSocket.close();
-            } catch (IOException e) {
-                Log.e(TAG, "Could not close the client socket", e);
-            }
+        @Override
+        protected void onPostExecute(BluetoothSocket socket) {
+            btSD.setBtServerSocket(socket);
+            btSD.setBtServerMac(socket.getRemoteDevice().getAddress());
+            btSD.setBtClientMac(mBluetoothAdapter.getAddress());
+            btSD.setGameStarter(false);
+            startGame();
         }
     }
 }

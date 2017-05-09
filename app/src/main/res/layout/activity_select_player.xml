@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="ovh.crow.guesswho.PlayingActivity"
+    android:background="@color/gray_transparent">
+
+    <TextView
+        android:id="@+id/tv_select_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingTop="20dp"
+        android:textSize="20sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:text="@string/tv_select" />
+
+    <TextView
+        android:id="@+id/tv_shake_device"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_select_player"
+        android:textSize="15sp"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:text="@string/tv_shake" />
+
+    <ImageView
+        android:id="@+id/iv_selected_player"
+        android:layout_width="wrap_content"
+        android:layout_height="170dp"
+        android:paddingTop="-40dp"
+        android:layout_below="@+id/tv_shake_device"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp" />
+
+    <Button
+        android:id="@+id/btn_sel_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_sel_player"
+        android:onClick="onSelectPlayer"
+        android:layout_below="@+id/iv_selected_player"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true" />
+
+
+</RelativeLayout>

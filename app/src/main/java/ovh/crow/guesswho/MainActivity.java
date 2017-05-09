@@ -39,9 +39,9 @@ public class MainActivity extends AppCompatActivity {
         //startActivity(intent);
 
         /*
-        Bluetooth check.
-        First check if device supports Bluetooth
-        Then check if Bluetooth is enabled.
+         * Bluetooth check.
+         * First check if device supports Bluetooth
+         * Then check if Bluetooth is enabled.
          */
 
         if (mBluetoothAdapter == null) {
@@ -62,6 +62,11 @@ public class MainActivity extends AppCompatActivity {
 
     protected void onJoinGame(View view){
         Intent intent = new Intent(this, JoinGameActivity.class);
+        startActivity(intent);
+    }
+
+    protected void onAbout(View view){
+        Intent intent = new Intent(this, AboutActivity.class);
         startActivity(intent);
     }
 

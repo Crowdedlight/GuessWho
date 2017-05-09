@@ -9,11 +9,15 @@
     <GridView
         android:id="@+id/boardView"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/spinnerArea"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:clickable="true"
         android:columnWidth="90dp"
+        android:contextClickable="true"
         android:horizontalSpacing="10dp"
+        android:longClickable="true"
         android:numColumns="auto_fit"
         android:stretchMode="columnWidth"
         android:verticalSpacing="5dp" />
@@ -23,14 +27,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:layout_below="@+id/boardView"
-        android:layout_alignParentStart="true" />
+        android:layout_above="@+id/spinnerAttribute"
+        android:layout_alignParentStart="true"/>
 
     <Spinner
         android:id="@+id/spinnerAttribute"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinnerArea"
+        android:layout_above="@+id/askBtn"
         android:layout_alignParentStart="true" />
 
     <Button
@@ -38,7 +42,32 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ask_question"
-        android:onClick="SendQuestion"
-        android:layout_below="@+id/spinnerAttribute"
+        android:onClick="onSendQuestion"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/btn_myPlayer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_my_player"
+        android:onClick="onShowMyPlayer"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="false"
+        android:layout_marginLeft="10dp"/>
+
+    <Button
+        android:id="@+id/btn_gamestats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_gamestats"
+        android:onClick="onShowGameStats"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="false"
+        android:layout_marginEnd="10dp"/>
+
 </RelativeLayout>

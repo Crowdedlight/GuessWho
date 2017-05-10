@@ -32,6 +32,9 @@ public class SelectPlayerActivity extends AppCompatActivity {
     private float mAccelCurrent; // current acceleration including gravity
     private float mAccelLast; // last acceleration including gravity
 
+    final static int TIME_INTERVAL = 200;       // 200 milliseconds
+    private long lastUpdate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +66,7 @@ public class SelectPlayerActivity extends AppCompatActivity {
         mAccelCurrent = SensorManager.GRAVITY_EARTH;
         mAccelLast = SensorManager.GRAVITY_EARTH;
 
+        lastUpdate = System.currentTimeMillis();
     }
 
     public void onSelectPlayer(View view) {
@@ -84,7 +88,14 @@ public class SelectPlayerActivity extends AppCompatActivity {
             mAccel = mAccel * 0.9f + delta; // perform low-cut filter
 
             if (mAccel > 8) {
-                handleShakeEvent();
+                
+                long curTime = System.currentTimeMillis();
+                long diffTime = (curTime - lastUpdate);
+
+                if (diffTime > TIME_INTERVAL) {
+                    lastUpdate = curTime;
+                    handleShakeEvent();
+                }
             }
         }
 

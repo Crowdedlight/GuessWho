@@ -75,7 +75,7 @@ public class SelectPlayerActivity extends AppCompatActivity {
         setResult(Activity.RESULT_OK,returnIntent);
         finish();
     }
-
+ 
     private final SensorEventListener mSensorListener = new SensorEventListener() {
 
         public void onSensorChanged(SensorEvent se) {
@@ -88,7 +88,7 @@ public class SelectPlayerActivity extends AppCompatActivity {
             mAccel = mAccel * 0.9f + delta; // perform low-cut filter
 
             if (mAccel > 8) {
-                
+
                 long curTime = System.currentTimeMillis();
                 long diffTime = (curTime - lastUpdate);
 

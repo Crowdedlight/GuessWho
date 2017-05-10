@@ -166,6 +166,7 @@ public class PlayingActivity extends AppCompatActivity {
                         })
                         .setView(personImg)
                         .setTitle("Guess:")
+                        .setCancelable(false)
                         .create();
                 personGuess.show();
                 return true;
@@ -210,14 +211,13 @@ public class PlayingActivity extends AppCompatActivity {
     }
 
     public void interpretReceivedJSON(){
-        Toast.makeText(getApplicationContext(), "Flag = " + gameData.getFlagIn(), Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(), "Flag = " + gameData.getFlagIn(), Toast.LENGTH_LONG).show();
 
         if (gameData.getFlagIn() == gameData.FLAG_QUESTION) {
             gameData.setFlagOut(gameData.FLAG_ANSWER);
             answerQuestionFromOpponent();
         }
         else if (gameData.getFlagIn() == gameData.FLAG_ANSWER) {
-            // TODO: 05/05/2017 Update playermodels, to fit answer.
             updateAfterReceivedAnswer();
         }
         else if (gameData.getFlagIn() == gameData.FLAG_GUESS) {
@@ -255,8 +255,12 @@ public class PlayingActivity extends AppCompatActivity {
                     }
                 })
                 .setTitle("Answer:")
+                .setCancelable(false)
                 .create();
         answerDialog.show();
+
+        final Button btn = (Button) findViewById(R.id.askBtn);
+        btn.setEnabled(true);
 
         gameData.flipMyTurn();
 
@@ -290,6 +294,7 @@ public class PlayingActivity extends AppCompatActivity {
                             dialogInterface.dismiss();
                         }
                     })
+                    .setCancelable(false)
                     .setTitle("Game over!")
                     .create();
             personGuess.show();
@@ -302,10 +307,14 @@ public class PlayingActivity extends AppCompatActivity {
                             dialogInterface.dismiss();
                         }
                     })
+                    .setCancelable(false)
                     .setTitle("Phew..")
                     .create();
             personGuess.show();
         }
+
+        final Button btn = (Button) findViewById(R.id.askBtn);
+        btn.setEnabled(true);
     }
 
     public void answerQuestionFromOpponent(){
@@ -349,6 +358,7 @@ public class PlayingActivity extends AppCompatActivity {
                         }
                     }
                 })
+                .setCancelable(false)
                 .setView(personImg)
                 .setTitle("Question:")
                 .create();
@@ -380,6 +390,7 @@ public class PlayingActivity extends AppCompatActivity {
                         }
                     })
                     .setTitle("You Win!")
+                    .setCancelable(false)
                     .create();
             personGuess.show();
         } else {
@@ -392,9 +403,13 @@ public class PlayingActivity extends AppCompatActivity {
                         }
                     })
                     .setTitle("Wrong guess")
+                    .setCancelable(false)
                     .create();
             personGuess.show();
         }
+
+        final Button btn = (Button) findViewById(R.id.askBtn);
+        btn.setEnabled(true);
     }
 
     public void longPressGuess() {
@@ -403,6 +418,10 @@ public class PlayingActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"It's not your turn..", Toast.LENGTH_SHORT).show();
         } else {
             gameData.setFlagOut(gameData.FLAG_GUESS);
+
+            final Button btn = (Button) findViewById(R.id.askBtn);
+            btn.setEnabled(false);
+
             new SendBTQuestion(bufferedwriter).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, gameData.toJSON());
         }
     }
@@ -417,6 +436,12 @@ public class PlayingActivity extends AppCompatActivity {
 
             gameData.setFlagOut(gameData.FLAG_QUESTION);
             gameData.setAttID(mAttribute.getId());
+
+            final Button btn = (Button) findViewById(R.id.askBtn);
+            btn.setEnabled(false);
+
+            Toast.makeText(getApplicationContext(), "Question send..." , Toast.LENGTH_SHORT).show();
+
             new SendBTQuestion(bufferedwriter).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR, gameData.toJSON());
         }
     }
@@ -446,6 +471,7 @@ public class PlayingActivity extends AppCompatActivity {
                 })
                 .setView(personImg)
                 .setTitle("Your player")
+                .setCancelable(false)
                 .create();
         answerDialog.show();
     }
@@ -460,6 +486,7 @@ public class PlayingActivity extends AppCompatActivity {
                     }
                 })
                 .setTitle("Game stats")
+                .setCancelable(false)
                 .create();
         answerDialog.show();
     }
